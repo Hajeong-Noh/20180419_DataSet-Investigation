@@ -1,0 +1,1098 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{investigate-a-dataset-template}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Project: Investigate a European Soccer
+Dataset}\label{project-investigate-a-european-soccer-dataset}
+
+\subsection{Table of Contents}\label{table-of-contents}
+
+Introduction
+
+Data Wrangling
+
+Exploratory Data Analysis
+
+Conclusions
+
+     \#\# Introduction: which player in European league showed the most
+improved performance throughout his career?
+
+\begin{quote}
+The database I selected is a soccer database that comes from Kaggle. It
+contains data for soccer matches, players and teams from several
+European countries from 2008 to 2016. By means of Exploratory Data
+Analysis method, I would like to analyze which player in European league
+showed the most improved performance throughout his career. Also, I
+would like to find out how he's rating has been improved and how his
+team's standing in the league has changed through out his career.
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{c+c1}{\PYZsh{} Import necessary packages}
+         \PY{k+kn}{import} \PY{n+nn}{sqlite3}
+         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{patches} \PY{k}{as} \PY{n+nn}{mpatches}
+         \PY{o}{\PYZpc{}} \PY{n}{matplotlib} \PY{n}{inline}
+\end{Verbatim}
+
+
+     \#\# Data Wrangling
+
+\begin{quote}
+In this section, I checked the dataset and trim unnecessary columns.
+Also, new column is appended in player attribute table for better
+analysis.
+\end{quote}
+
+\subsubsection{Data Gathering}\label{data-gathering}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} Connect to the database and load all the tables on the python code}
+        \PY{n}{con} \PY{o}{=} \PY{n}{sqlite3}\PY{o}{.}\PY{n}{connect}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{database.sqlite}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{country} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{league} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM League}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{match} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Match}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{player} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Player}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{pa} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Player\PYZus{}Attributes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{team} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+        \PY{n}{ta} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}sql}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{SELECT * FROM Team\PYZus{}Attributes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{con}\PY{p}{)}
+\end{Verbatim}
+
+
+    \subsubsection{Data Assessing}\label{data-assessing}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} 1\PYZhy{}1. Very large columns on match table}
+        \PY{n}{match}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} (25979, 115)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} 1\PYZhy{}2. Lots of null values in match table}
+        \PY{n}{match}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} id                      0
+        country\_id              0
+        league\_id               0
+        season                  0
+        stage                   0
+        date                    0
+        match\_api\_id            0
+        home\_team\_api\_id        0
+        away\_team\_api\_id        0
+        home\_team\_goal          0
+        away\_team\_goal          0
+        home\_player\_X1       1821
+        home\_player\_X2       1821
+        home\_player\_X3       1832
+        home\_player\_X4       1832
+        home\_player\_X5       1832
+        home\_player\_X6       1832
+        home\_player\_X7       1832
+        home\_player\_X8       1832
+        home\_player\_X9       1832
+        home\_player\_X10      1832
+        home\_player\_X11      1832
+        away\_player\_X1       1832
+        away\_player\_X2       1832
+        away\_player\_X3       1832
+        away\_player\_X4       1832
+        away\_player\_X5       1832
+        away\_player\_X6       1832
+        away\_player\_X7       1832
+        away\_player\_X8       1832
+                            {\ldots}  
+        B365H                3387
+        B365D                3387
+        B365A                3387
+        BWH                  3404
+        BWD                  3404
+        BWA                  3404
+        IWH                  3459
+        IWD                  3459
+        IWA                  3459
+        LBH                  3423
+        LBD                  3423
+        LBA                  3423
+        PSH                 14811
+        PSD                 14811
+        PSA                 14811
+        WHH                  3408
+        WHD                  3408
+        WHA                  3408
+        SJH                  8882
+        SJD                  8882
+        SJA                  8882
+        VCH                  3411
+        VCD                  3411
+        VCA                  3411
+        GBH                 11817
+        GBD                 11817
+        GBA                 11817
+        BSH                 11818
+        BSD                 11818
+        BSA                 11818
+        Length: 115, dtype: int64
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} 2. The data type of \PYZsq{}date\PYZsq{} in match, team\PYZus{}attribute and player\PYZus{}attribute table is object, not datetime.}
+        \PY{n}{match}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}\PY{p}{,} \PY{n}{ta}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}\PY{p}{,} \PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} (dtype('O'), dtype('O'), dtype('O'))
+\end{Verbatim}
+            
+    \subsubsection{Data Cleaning}\label{data-cleaning}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} 1. Make new dataframe that does not contain columns that are not used in this notebook for analysis}
+        \PY{n}{match\PYZus{}simple} \PY{o}{=} \PY{n}{match}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{l+m+mi}{11}\PY{p}{]}
+        \PY{n}{match\PYZus{}simple}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:}    id  country\_id  league\_id     season  stage                 date  \textbackslash{}
+        0   1           1          1  2008/2009      1  2008-08-17 00:00:00   
+        1   2           1          1  2008/2009      1  2008-08-16 00:00:00   
+        2   3           1          1  2008/2009      1  2008-08-16 00:00:00   
+        3   4           1          1  2008/2009      1  2008-08-17 00:00:00   
+        4   5           1          1  2008/2009      1  2008-08-16 00:00:00   
+        
+           match\_api\_id  home\_team\_api\_id  away\_team\_api\_id  home\_team\_goal  \textbackslash{}
+        0        492473              9987              9993               1   
+        1        492474             10000              9994               0   
+        2        492475              9984              8635               0   
+        3        492476              9991              9998               5   
+        4        492477              7947              9985               1   
+        
+           away\_team\_goal  
+        0               1  
+        1               0  
+        2               3  
+        3               0  
+        4               3  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} 2. change data type of \PYZsq{}date\PYZsq{} column to datetime}
+        \PY{n}{match\PYZus{}simple}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{match\PYZus{}simple}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{ta}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{ta}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{match\PYZus{}simple}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}\PY{p}{,} \PY{n}{ta}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}\PY{p}{,} \PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{dtypes}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} (dtype('<M8[ns]'), dtype('<M8[ns]'), dtype('<M8[ns]'))
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} 3. From which month to which month means season 2012/2013?}
+        \PY{k}{for} \PY{n}{season} \PY{o+ow}{in} \PY{n}{match\PYZus{}simple}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{min} \PY{o}{=} \PY{n}{match\PYZus{}simple}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season == @season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}
+            \PY{n+nb}{max} \PY{o}{=} \PY{n}{match\PYZus{}simple}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season == @season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZlt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{season}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZgt{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{min: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{min}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{   max: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{max}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+< 2008/2009 > min:  2008-07-18 00:00:00    max:  2009-05-31 00:00:00
+< 2009/2010 > min:  2009-07-11 00:00:00    max:  2010-05-16 00:00:00
+< 2010/2011 > min:  2010-07-17 00:00:00    max:  2011-05-29 00:00:00
+< 2011/2012 > min:  2011-07-16 00:00:00    max:  2012-05-23 00:00:00
+< 2012/2013 > min:  2012-07-13 00:00:00    max:  2013-06-02 00:00:00
+< 2013/2014 > min:  2013-07-13 00:00:00    max:  2014-05-18 00:00:00
+< 2014/2015 > min:  2014-07-18 00:00:00    max:  2015-05-31 00:00:00
+< 2015/2016 > min:  2015-07-17 00:00:00    max:  2016-05-25 00:00:00
+
+    \end{Verbatim}
+
+    \begin{quote}
+The result shows that the season starts in July and ends at least in
+June of the next year
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} 4. Append \PYZsq{}season\PYZsq{} column in team attributes and player attributes so that it is easier to compare them with match table}
+        \PY{c+c1}{\PYZsh{} 4\PYZhy{}1. Define a function that decides the season according to a date.}
+        \PY{k}{def} \PY{n+nf}{to\PYZus{}season} \PY{p}{(}\PY{n}{date}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{date}\PY{o}{.}\PY{n}{month} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{7}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb}{str}\PY{p}{(}\PY{n}{date}\PY{o}{.}\PY{n}{year}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{date}\PY{o}{.}\PY{n}{year}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb}{str}\PY{p}{(}\PY{n}{date}\PY{o}{.}\PY{n}{year}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{/}\PY{l+s+s2}{\PYZdq{}}\PY{o}{+}\PY{n+nb}{str}\PY{p}{(}\PY{n}{date}\PY{o}{.}\PY{n}{year}\PY{p}{)}
+            
+        \PY{c+c1}{\PYZsh{} test function}
+        \PY{n}{to\PYZus{}season}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2008\PYZhy{}07\PYZhy{}18}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{to\PYZus{}season}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2010\PYZhy{}05\PYZhy{}16}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} ('2008/2009', '2009/2010')
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} 4\PYZhy{}2. Append \PYZsq{}season\PYZsq{} column in team attributes and player attributes}
+         \PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pa}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{t} \PY{p}{:} \PY{n}{to\PYZus{}season}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{pa}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:}    id  player\_fifa\_api\_id  player\_api\_id       date  overall\_rating  \textbackslash{}
+         0   1              218353         505942 2016-02-18            67.0   
+         1   2              218353         505942 2015-11-19            67.0   
+         2   3              218353         505942 2015-09-21            62.0   
+         3   4              218353         505942 2015-03-20            61.0   
+         4   5              218353         505942 2007-02-22            61.0   
+         
+            potential preferred\_foot attacking\_work\_rate defensive\_work\_rate  crossing  \textbackslash{}
+         0       71.0          right              medium              medium      49.0   
+         1       71.0          right              medium              medium      49.0   
+         2       66.0          right              medium              medium      49.0   
+         3       65.0          right              medium              medium      48.0   
+         4       65.0          right              medium              medium      48.0   
+         
+              {\ldots}      penalties  marking  standing\_tackle  sliding\_tackle  gk\_diving  \textbackslash{}
+         0    {\ldots}           48.0     65.0             69.0            69.0        6.0   
+         1    {\ldots}           48.0     65.0             69.0            69.0        6.0   
+         2    {\ldots}           48.0     65.0             66.0            69.0        6.0   
+         3    {\ldots}           47.0     62.0             63.0            66.0        5.0   
+         4    {\ldots}           47.0     62.0             63.0            66.0        5.0   
+         
+            gk\_handling  gk\_kicking  gk\_positioning  gk\_reflexes     season  
+         0         11.0        10.0             8.0          8.0  2015/2016  
+         1         11.0        10.0             8.0          8.0  2015/2016  
+         2         11.0        10.0             8.0          8.0  2015/2016  
+         3         10.0         9.0             7.0          7.0  2014/2015  
+         4         10.0         9.0             7.0          7.0  2006/2007  
+         
+         [5 rows x 43 columns]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} 5. Merge player and player\PYZus{}attribute table for the better analysis}
+         \PY{n}{player\PYZus{}merge} \PY{o}{=} \PY{n}{player}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{pa}\PY{p}{,} \PY{n}{left\PYZus{}on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{right\PYZus{}on}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{inner}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{player\PYZus{}merge}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} (183978, 49)
+\end{Verbatim}
+            
+     \#\# Exploratory Data Analysis
+
+\subsubsection{Q1. Which player showed the most improved performance
+throughout his
+career?}\label{q1.-which-player-showed-the-most-improved-performance-throughout-his-career}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} A1\PYZhy{}1. Define a function to measure the difference of max overall average rating and min overall average rating of each player\PYZsq{}s career}
+         \PY{k}{def} \PY{n+nf}{diff\PYZus{}rating} \PY{p}{(}\PY{n}{player\PYZus{}id}\PY{p}{)}\PY{p}{:}
+             \PY{n}{season\PYZus{}rating} \PY{o}{=} \PY{n}{player\PYZus{}merge}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id ==  @player\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{overall\PYZus{}rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+             \PY{k}{return} \PY{n}{season\PYZus{}rating}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{season\PYZus{}rating}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Test function}
+         \PY{n}{diff\PYZus{}rating}\PY{p}{(}\PY{l+m+mi}{505942}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 4.333333333333329
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} A1\PYZhy{}2. Get improved performance of all players and append it in player table}
+         \PY{n}{player}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{improve}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{player}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{p} \PY{p}{:} \PY{n}{diff\PYZus{}rating}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{player}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:}    id  player\_api\_id         player\_name  player\_fifa\_api\_id  \textbackslash{}
+         0   1         505942  Aaron Appindangoye              218353   
+         1   2         155782     Aaron Cresswell              189615   
+         2   3         162549         Aaron Doran              186170   
+         3   4          30572       Aaron Galindo              140161   
+         4   5          23780        Aaron Hughes               17725   
+         
+                       birthday  height  weight    improve  
+         0  1992-02-29 00:00:00  182.88     187   4.333333  
+         1  1989-12-15 00:00:00  170.18     146  23.375000  
+         2  1991-05-13 00:00:00  170.18     163  10.200000  
+         3  1982-05-08 00:00:00  182.88     198   7.000000  
+         4  1979-11-08 00:00:00  182.88     154   8.000000  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} A1\PYZhy{}3. Sort by improve in descending order}
+         \PY{n}{player}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{improve}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         
+         \PY{n}{player}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:}         id  player\_api\_id            player\_name  player\_fifa\_api\_id  \textbackslash{}
+         6715  6725         129944             Marco Reus              188350   
+         3460  3464          41841  Francesco Della Rocca              178043   
+         2835  2838         107417            Eden Hazard              183277   
+         8915  8929         115591      Ricardo Rodriguez              193352   
+         8696  8710          41433       Radja Nainggolan              178518   
+         
+                          birthday  height  weight    improve  
+         6715  1989-05-31 00:00:00  180.34     165  42.000000  
+         3460  1987-09-14 00:00:00  182.88     161  39.000000  
+         2835  1991-01-07 00:00:00  172.72     163  37.666667  
+         8915  1992-08-25 00:00:00  180.34     170  37.666667  
+         8696  1988-05-04 00:00:00  175.26     143  37.000000  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} A1\PYZhy{}4. Average improve of all European league players}
+         \PY{n}{player}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{improve}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} 8.455834468828424
+\end{Verbatim}
+            
+    \subsubsection{Q2. How is he's rating improved throughout his career?
+How has his team's standing in the league changed in this
+period?}\label{q2.-how-is-hes-rating-improved-throughout-his-career-how-has-his-teams-standing-in-the-league-changed-in-this-period}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} A2\PYZhy{}1. Get the season ratings of Marco Reus}
+         \PY{n}{player\PYZus{}merge}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id ==  129944}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{overall\PYZus{}rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} season
+         2006/2007    44.000000
+         2008/2009    53.500000
+         2009/2010    71.000000
+         2010/2011    76.500000
+         2011/2012    80.500000
+         2012/2013    84.000000
+         2013/2014    84.909091
+         2014/2015    86.000000
+         2015/2016    86.000000
+         Name: overall\_rating, dtype: float64
+\end{Verbatim}
+            
+    \begin{quote}
+The rating of Marco Reus in 2007/2008 season is missing in the dataset.
+Let's fill the 2007/2008 season with the mean rating of 2006/2007 season
+and 2008/2009 season for a better graph.
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} A2\PYZhy{}2. Fill the 2007/2008 season with the mean rating of 2006/2007 season and 2008/2009 season}
+         \PY{n}{reus\PYZus{}rating} \PY{o}{=} \PY{n}{player\PYZus{}merge}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{player\PYZus{}api\PYZus{}id ==  129944}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{overall\PYZus{}rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{reus\PYZus{}rating}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2007/2008}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{reus\PYZus{}rating}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2006/2007}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{n}{reus\PYZus{}rating}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2008/2009}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{2}
+         
+         \PY{n}{reus\PYZus{}rating}\PY{o}{.}\PY{n}{sort\PYZus{}index}\PY{p}{(}\PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{n}{reus\PYZus{}rating}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} season
+         2006/2007    44.000000
+         2007/2008    48.750000
+         2008/2009    53.500000
+         2009/2010    71.000000
+         2010/2011    76.500000
+         2011/2012    80.500000
+         2012/2013    84.000000
+         2013/2014    84.909091
+         2014/2015    86.000000
+         2015/2016    86.000000
+         Name: overall\_rating, dtype: float64
+\end{Verbatim}
+            
+    \begin{quote}
+Since the team information of players is not included in the dataset, I
+searched for Marco Leus' team information of each season in Wikipedia.
+The result is as follwing:
+\end{quote}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Season & Team\tabularnewline
+\midrule
+\endhead
+\emph{2006-2007} & Rot Weiss Ahlen II\tabularnewline
+\emph{2007-2009} & Rot Weiss Ahlen\tabularnewline
+\emph{2009-2012} & Borussia Mönchengladbach\tabularnewline
+\emph{2012-} & Borussia Dortmund\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+Marco Leus has played in Bundesliga for his whole career. Let's explore
+how the standing of each team in Bundesliga has changed throughout the
+years!
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}1. What is the ID of Bundesliga?}
+         \PY{n}{league}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:}        id  country\_id                      name
+         0       1           1    Belgium Jupiler League
+         1    1729        1729    England Premier League
+         2    4769        4769            France Ligue 1
+         3    7809        7809     Germany 1. Bundesliga
+         4   10257       10257             Italy Serie A
+         5   13274       13274    Netherlands Eredivisie
+         6   15722       15722        Poland Ekstraklasa
+         7   17642       17642  Portugal Liga ZON Sagres
+         8   19694       19694   Scotland Premier League
+         9   21518       21518           Spain LIGA BBVA
+         10  24558       24558  Switzerland Super League
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}2. Check the teams in Bundesliga}
+         \PY{n}{bu\PYZus{}match} \PY{o}{=} \PY{n}{match\PYZus{}simple}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{league\PYZus{}id == 7809}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{home\PYZus{}teams} \PY{o}{=} \PY{n}{bu\PYZus{}match}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{home\PYZus{}team\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
+         \PY{n}{away\PYZus{}teams} \PY{o}{=} \PY{n}{bu\PYZus{}match}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{away\PYZus{}team\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Check if home teams and away teams are same, empty array means the values are same}
+         \PY{n}{np}\PY{o}{.}\PY{n}{setdiff1d}\PY{p}{(}\PY{n}{home\PYZus{}teams}\PY{p}{,} \PY{n}{away\PYZus{}teams}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} array([], dtype=int64)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}3. Check the seasons in Bundesliga}
+         \PY{n}{bu\PYZus{}season} \PY{o}{=} \PY{n}{bu\PYZus{}match}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{bu\PYZus{}season}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} array(['2008/2009', '2009/2010', '2010/2011', '2011/2012', '2012/2013',
+                '2013/2014', '2014/2015', '2015/2016'], dtype=object)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{home\PYZus{}teams}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} array([ 9823,  8178, 10189,  8721,  9810,  9912,  8398,  9788,  8295,
+                 9790,  8697,  8177,  8722,  9911,  9789, 10269,  9904,  8226,
+                 8358,  8165,  9905,  8350,  8152,  8406,  8357,  8194,  9776,
+                 8460,  8262,  8234], dtype=int64)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}4. Make a Bundesliga standings table}
+         \PY{n}{bu\PYZus{}standings} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{team\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{win}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{draw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{k}{for} \PY{n}{season} \PY{o+ow}{in} \PY{n}{bu\PYZus{}season}\PY{p}{:}
+             \PY{k}{for} \PY{n}{team\PYZus{}id} \PY{o+ow}{in} \PY{n}{home\PYZus{}teams}\PY{p}{:}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{season}\PY{p}{,} \PY{n}{team\PYZus{}id}\PY{p}{,} \PY{n}{team}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{team\PYZus{}api\PYZus{}id == @team\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{team\PYZus{}long\PYZus{}name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+                 \PY{n}{i} \PY{o}{=} \PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}
+         
+         \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:}       season team\_id                 name win draw lose point
+         0  2008/2009    9823     FC Bayern Munich   0    0    0     0
+         1  2008/2009    8178  Bayer 04 Leverkusen   0    0    0     0
+         2  2008/2009   10189        FC Schalke 04   0    0    0     0
+         3  2008/2009    8721        VfL Wolfsburg   0    0    0     0
+         4  2008/2009    9810  Eintracht Frankfurt   0    0    0     0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}5. Fill the points in the standings table according to Bundesliga match records}
+         \PY{k}{for} \PY{n}{index}\PY{p}{,} \PY{n}{row} \PY{o+ow}{in} \PY{n}{bu\PYZus{}match}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n}{each\PYZus{}season} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+             \PY{n}{home\PYZus{}team} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{home\PYZus{}team\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+             \PY{n}{away\PYZus{}team} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{away\PYZus{}team\PYZus{}api\PYZus{}id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+             \PY{n}{home\PYZus{}index} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season == @each\PYZus{}season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{team\PYZus{}id == @home\PYZus{}team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{n}{away\PYZus{}index} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season == @each\PYZus{}season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{team\PYZus{}id == @away\PYZus{}team}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{index}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{if} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{home\PYZus{}team\PYZus{}goal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZgt{}} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{away\PYZus{}team\PYZus{}goal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{win}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{win}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{3}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+             \PY{k}{elif} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{home\PYZus{}team\PYZus{}goal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{away\PYZus{}team\PYZus{}goal}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{draw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{draw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{draw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{draw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+             \PY{k}{else}\PY{p}{:}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{home\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lose}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{win}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{win}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{1}
+                 \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{away\PYZus{}index}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{+} \PY{l+m+mi}{3}
+                 
+         \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{True}\PY{p}{,} \PY{k+kc}{False}\PY{p}{]}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{n}{bu\PYZus{}standings}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:}         season team\_id                      name win draw lose point
+         3    2008/2009    8721             VfL Wolfsburg  21    6    7    69
+         0    2008/2009    9823          FC Bayern Munich  20    7    7    67
+         15   2008/2009   10269             VfB Stuttgart  19    7    8    64
+         11   2008/2009    8177         Hertha BSC Berlin  19    6    9    63
+         9    2008/2009    9790              Hamburger SV  19    4   11    61
+         14   2008/2009    9789         Borussia Dortmund  15   14    5    59
+         17   2008/2009    8226       TSG 1899 Hoffenheim  15   10    9    55
+         2    2008/2009   10189             FC Schalke 04  14    8   12    50
+         1    2008/2009    8178       Bayer 04 Leverkusen  14    7   13    49
+         10   2008/2009    8697          SV Werder Bremen  12    9   13    45
+         16   2008/2009    9904               Hannover 96  10   10   14    40
+         12   2008/2009    8722                1. FC Köln  11    6   17    39
+         4    2008/2009    9810       Eintracht Frankfurt   8    9   17    33
+         13   2008/2009    9911                VfL Bochum   7   11   16    32
+         7    2008/2009    9788  Borussia Mönchengladbach   8    7   19    31
+         6    2008/2009    8398        FC Energie Cottbus   8    6   20    30
+         8    2008/2009    8295             Karlsruher SC   8    5   21    29
+         5    2008/2009    9912     DSC Arminia Bielefeld   4   16   14    28
+         18   2008/2009    8358               SC Freiburg   0    0    0     0
+         19   2008/2009    8165            1. FC Nürnberg   0    0    0     0
+         20   2008/2009    9905           1. FSV Mainz 05   0    0    0     0
+         21   2008/2009    8350      1. FC Kaiserslautern   0    0    0     0
+         22   2008/2009    8152              FC St. Pauli   0    0    0     0
+         23   2008/2009    8406               FC Augsburg   0    0    0     0
+         24   2008/2009    8357      SpVgg Greuther Fürth   0    0    0     0
+         25   2008/2009    8194        Fortuna Düsseldorf   0    0    0     0
+         26   2008/2009    9776    Eintracht Braunschweig   0    0    0     0
+         27   2008/2009    8460           SC Paderborn 07   0    0    0     0
+         28   2008/2009    8262           SV Darmstadt 98   0    0    0     0
+         29   2008/2009    8234          FC Ingolstadt 04   0    0    0     0
+         ..         {\ldots}     {\ldots}                       {\ldots}  ..  {\ldots}  {\ldots}   {\ldots}
+         210  2015/2016    9823          FC Bayern Munich  28    4    2    88
+         224  2015/2016    9789         Borussia Dortmund  24    6    4    78
+         211  2015/2016    8178       Bayer 04 Leverkusen  18    6   10    60
+         217  2015/2016    9788  Borussia Mönchengladbach  17    4   13    55
+         212  2015/2016   10189             FC Schalke 04  15    7   12    52
+         221  2015/2016    8177         Hertha BSC Berlin  14    8   12    50
+         230  2015/2016    9905           1. FSV Mainz 05  14    8   12    50
+         213  2015/2016    8721             VfL Wolfsburg  12    9   13    45
+         222  2015/2016    8722                1. FC Köln  10   13   11    43
+         219  2015/2016    9790              Hamburger SV  11    8   15    41
+         239  2015/2016    8234          FC Ingolstadt 04  10   10   14    40
+         220  2015/2016    8697          SV Werder Bremen  10    8   16    38
+         233  2015/2016    8406               FC Augsburg   9   11   14    38
+         238  2015/2016    8262           SV Darmstadt 98   9   11   14    38
+         227  2015/2016    8226       TSG 1899 Hoffenheim   9   10   15    37
+         214  2015/2016    9810       Eintracht Frankfurt   9    9   16    36
+         225  2015/2016   10269             VfB Stuttgart   9    6   19    33
+         226  2015/2016    9904               Hannover 96   7    4   23    25
+         215  2015/2016    9912     DSC Arminia Bielefeld   0    0    0     0
+         216  2015/2016    8398        FC Energie Cottbus   0    0    0     0
+         218  2015/2016    8295             Karlsruher SC   0    0    0     0
+         223  2015/2016    9911                VfL Bochum   0    0    0     0
+         228  2015/2016    8358               SC Freiburg   0    0    0     0
+         229  2015/2016    8165            1. FC Nürnberg   0    0    0     0
+         231  2015/2016    8350      1. FC Kaiserslautern   0    0    0     0
+         232  2015/2016    8152              FC St. Pauli   0    0    0     0
+         234  2015/2016    8357      SpVgg Greuther Fürth   0    0    0     0
+         235  2015/2016    8194        Fortuna Düsseldorf   0    0    0     0
+         236  2015/2016    9776    Eintracht Braunschweig   0    0    0     0
+         237  2015/2016    8460           SC Paderborn 07   0    0    0     0
+         
+         [240 rows x 7 columns]
+\end{Verbatim}
+            
+    \begin{quote}
+The result matches the real standings of Bundesliga of each year! It
+seems that the match information of teams in second division of
+Bundesliga are is not applied in the match dataset.
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}6. Rank each season by point}
+         \PY{n}{bu\PYZus{}standings}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rank}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{point}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{rank}\PY{p}{(}\PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
+         
+         \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:}        season team\_id               name win draw lose point  rank
+         3   2008/2009    8721      VfL Wolfsburg  21    6    7    69     1
+         0   2008/2009    9823   FC Bayern Munich  20    7    7    67     2
+         15  2008/2009   10269      VfB Stuttgart  19    7    8    64     3
+         11  2008/2009    8177  Hertha BSC Berlin  19    6    9    63     4
+         9   2008/2009    9790       Hamburger SV  19    4   11    61     5
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} A3\PYZhy{}7. How has the standings of the team where Marco Reus played in changed?}
+         \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name == }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Borussia Mönchengladbach}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:}         season team\_id                      name win draw lose point  rank
+         7    2008/2009    9788  Borussia Mönchengladbach   8    7   19    31    15
+         37   2009/2010    9788  Borussia Mönchengladbach  10    9   15    39    12
+         67   2010/2011    9788  Borussia Mönchengladbach  10    6   18    36    16
+         97   2011/2012    9788  Borussia Mönchengladbach  17    9    8    60     4
+         127  2012/2013    9788  Borussia Mönchengladbach  12   11   11    47     8
+         157  2013/2014    9788  Borussia Mönchengladbach  16    7   11    55     6
+         187  2014/2015    9788  Borussia Mönchengladbach  19    9    6    66     3
+         217  2015/2016    9788  Borussia Mönchengladbach  17    4   13    55     4
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name == }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Borussia Dortmund}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:}         season team\_id               name win draw lose point  rank
+         14   2008/2009    9789  Borussia Dortmund  15   14    5    59     6
+         44   2009/2010    9789  Borussia Dortmund  16    9    9    57     5
+         74   2010/2011    9789  Borussia Dortmund  23    6    5    75     1
+         104  2011/2012    9789  Borussia Dortmund  25    6    3    81     1
+         134  2012/2013    9789  Borussia Dortmund  19    9    6    66     2
+         164  2013/2014    9789  Borussia Dortmund  22    5    7    71     2
+         194  2014/2015    9789  Borussia Dortmund  13    7   14    46     7
+         224  2015/2016    9789  Borussia Dortmund  24    6    4    78     2
+\end{Verbatim}
+            
+     \#\# Conclusions
+
+    \subsubsection{\texorpdfstring{The player who showed most improved
+performance in career:
+\texttt{Marco\ Reus}}{The player who showed most improved performance in career: Marco Reus}}\label{the-player-who-showed-most-improved-performance-in-career-marco-reus}
+
+\begin{quote}
+\texttt{Marco\ Reus}' season rating improved total \textbf{42} points
+throughout his career while other players' rating improved \textbf{8.5}
+in average.
+\end{quote}
+
+    \href{https://en.wikipedia.org/wiki/Marco_Reus}{\includegraphics{https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Marco_Reus_2014.jpg/200px-Marco_Reus_2014.jpg}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Season & Team\tabularnewline
+\midrule
+\endhead
+\emph{2006-2007} & Rot Weiss Ahlen II\tabularnewline
+\emph{2007-2009} & Rot Weiss Ahlen\tabularnewline
+\emph{2009-2012} & Borussia Mönchengladbach\tabularnewline
+\emph{2012-} & Borussia Dortmund\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \subsubsection{\texorpdfstring{How has the rating of
+\texttt{Marco\ Reus} changed in his
+career?}{How has the rating of Marco Reus changed in his career?}}\label{how-has-the-rating-of-marco-reus-changed-in-his-career}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{team\PYZus{}color} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{reus\PYZus{}rating}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{kind}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Average Season Rating of Marco Reus}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{n}{team\PYZus{}color}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{rot}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Make a legend}
+         \PY{n}{RWA} \PY{o}{=} \PY{n}{mpatches}\PY{o}{.}\PY{n}{Patch}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Rot Weiss Ahlen}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{BM} \PY{o}{=} \PY{n}{mpatches}\PY{o}{.}\PY{n}{Patch}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Borussia Mönchengladbach}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{BD} \PY{o}{=} \PY{n}{mpatches}\PY{o}{.}\PY{n}{Patch}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Borussia Dortmund}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{handles}\PY{o}{=}\PY{p}{[}\PY{n}{RWA}\PY{p}{,} \PY{n}{BM}\PY{p}{,} \PY{n}{BD}\PY{p}{,}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{average rating per season}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:} Text(0,0.5,'average rating per season')
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_41_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{quote}
+\texttt{Marco\ Reus}' rating kept improving throughout his career. His
+rating soared when he started a career in the team \emph{Borussia
+Mönchengladbach} in the season 2009/2010. Since he moved his team to
+\emph{Borussia Dortmund}, he has been showing great performance in the
+matches.
+\end{quote}
+
+    \subsubsection{How has the standings of his teams changed while he is
+playing in the
+team?}\label{how-has-the-standings-of-his-teams-changed-while-he-is-playing-in-the-team}
+
+    \begin{quote}
+Since Rot Weiss Ahlen is not the first division of Bundesliga, there is
+no information on this team. Therefore, \emph{Borussia Mönchengladbach}
+and \emph{Borussia Dortmund} Teams' standings are explored.
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{c+c1}{\PYZsh{} Add title and labels}
+         \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{fig}\PY{o}{.}\PY{n}{suptitle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Standings of the teams where Marco Reus Played}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize} \PY{o}{=} \PY{l+m+mi}{20}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rank in Bundesliga}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{14}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Plot Borussia Mönchengladbach standings}
+         \PY{n}{BM\PYZus{}standings} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name == }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Borussia Mönchengladbach}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{BM\PYZus{}season} \PY{o}{=} \PY{n}{BM\PYZus{}standings}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{BM\PYZus{}rank} \PY{o}{=} \PY{n}{BM\PYZus{}standings}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rank}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{BM\PYZus{}season}\PY{p}{,} \PY{n}{BM\PYZus{}rank}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Plot Borussia Dortmund standings}
+         \PY{n}{BD\PYZus{}standings} \PY{o}{=} \PY{n}{bu\PYZus{}standings}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name == }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{Borussia Dortmund}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{BD\PYZus{}season} \PY{o}{=} \PY{n}{BD\PYZus{}standings}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{season}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{BD\PYZus{}rank} \PY{o}{=} \PY{n}{BD\PYZus{}standings}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rank}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{BD\PYZus{}season}\PY{p}{,} \PY{n}{BD\PYZus{}rank}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Invert y axis (ranking)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{invert\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} make a legend}
+         \PY{n}{BM} \PY{o}{=} \PY{n}{mpatches}\PY{o}{.}\PY{n}{Patch}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{g}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Borussia Mönchengladbach}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{BD} \PY{o}{=} \PY{n}{mpatches}\PY{o}{.}\PY{n}{Patch}\PY{p}{(}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Borussia Dortmund}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{handles}\PY{o}{=}\PY{p}{[}\PY{n}{BM}\PY{p}{,} \PY{n}{BD}\PY{p}{]}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{best}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} show values on each point}
+         \PY{k}{for} \PY{n}{BM\PYZus{}season}\PY{p}{,} \PY{n}{BM\PYZus{}rank} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{BM\PYZus{}season}\PY{p}{,} \PY{n}{BM\PYZus{}rank}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{BM\PYZus{}rank}\PY{p}{)}\PY{p}{,}\PY{n}{xy}\PY{o}{=}\PY{p}{(}\PY{n}{BM\PYZus{}season}\PY{p}{,} \PY{n}{BM\PYZus{}rank}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.2}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{BD\PYZus{}season}\PY{p}{,} \PY{n}{BD\PYZus{}rank} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{BD\PYZus{}season}\PY{p}{,} \PY{n}{BD\PYZus{}rank}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{BD\PYZus{}rank}\PY{p}{)}\PY{p}{,}\PY{n}{xy}\PY{o}{=}\PY{p}{(}\PY{n}{BD\PYZus{}season}\PY{p}{,} \PY{n}{BD\PYZus{}rank}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_45_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{quote}
+While \texttt{Marco\ Reus} played in \emph{Borussia Mönchengladbach}
+(2009-2012), the standings of the team changed 12th -\textgreater{} 16th
+-\textgreater{} 4th. On the other hand, while he played in
+\emph{Borussia Dortmund} (2012-), the standings of the team changed 2th
+-\textgreater{} 2th -\textgreater{} 7th -\textgreater{} 2th. The graph
+indicates that the single player's rating does not really affect the
+standings of a team. A soccer team consists of 11 members!
+\end{quote}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
