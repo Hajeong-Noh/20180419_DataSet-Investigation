@@ -11797,7 +11797,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import necessary packages</span>
@@ -11827,7 +11827,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Connect to the database and load all the tables on the python code</span>
@@ -11857,7 +11857,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1-1. Very large columns on match table</span>
@@ -11874,7 +11874,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -11891,7 +11891,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1-2. Lots of null values in match table</span>
@@ -11908,7 +11908,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -11986,7 +11986,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2. The data type of &#39;date&#39; in match, team_attribute and player_attribute table is object, not datetime.</span>
@@ -12003,7 +12003,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -12028,7 +12028,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Make new dataframe that does not contain columns that are not used in this notebook for analysis</span>
@@ -12046,7 +12046,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -12166,14 +12166,15 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2. change data type of &#39;date&#39; column to datetime</span>
 <span class="n">match_simple</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">match_simple</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
 <span class="n">pa</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pa</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
 <span class="n">ta</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ta</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
-<span class="n">match_simple</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">ta</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">pa</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthday&#39;</span><span class="p">])</span>
+<span class="n">match_simple</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">ta</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">pa</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 
 </div>
@@ -12186,13 +12187,13 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(dtype(&#39;&lt;M8[ns]&#39;), dtype(&#39;&lt;M8[ns]&#39;), dtype(&#39;&lt;M8[ns]&#39;))</pre>
+<pre>(dtype(&#39;&lt;M8[ns]&#39;), dtype(&#39;&lt;M8[ns]&#39;), dtype(&#39;&lt;M8[ns]&#39;), dtype(&#39;&lt;M8[ns]&#39;))</pre>
 </div>
 
 </div>
@@ -12203,7 +12204,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3. From which month to which month means season 2012/2013?</span>
@@ -12255,7 +12256,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4. Append &#39;season&#39; column in team attributes and player attributes so that it is easier to compare them with match table</span>
@@ -12280,7 +12281,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -12297,7 +12298,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4-2. Append &#39;season&#39; column in team attributes and player attributes</span>
@@ -12316,7 +12317,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 
@@ -12497,7 +12498,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5. Merge player and player_attribute table for the better analysis</span>
@@ -12516,7 +12517,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -12536,13 +12537,192 @@ Length: 115, dtype: int64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id='eda'></a></p>
-<h2 id="Exploratory-Data-Analysis">Exploratory Data Analysis<a class="anchor-link" href="#Exploratory-Data-Analysis">&#182;</a></h2><h3 id="Q1.-Which-player-showed-the-most-improved-performance-throughout-his-career?">Q1. Which player showed the most improved performance throughout his career?<a class="anchor-link" href="#Q1.-Which-player-showed-the-most-improved-performance-throughout-his-career?">&#182;</a></h3>
+<h2 id="Exploratory-Data-Analysis">Exploratory Data Analysis<a class="anchor-link" href="#Exploratory-Data-Analysis">&#182;</a></h2><h3 id="Q0.-Basic-information-of-players-exploration-(Single-variable-exploration)">Q0. Basic information of players exploration (Single variable exploration)<a class="anchor-link" href="#Q0.-Basic-information-of-players-exploration-(Single-variable-exploration)">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extract birth year from birthday</span>
+<span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthyear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+
+<span class="n">player</span><span class="p">[[</span><span class="s1">&#39;birthyear&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>birthyear</th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>11060.000000</td>
+      <td>11060.000000</td>
+      <td>11060.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1986.642857</td>
+      <td>181.867445</td>
+      <td>168.380289</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.481362</td>
+      <td>6.369201</td>
+      <td>14.990217</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1967.000000</td>
+      <td>157.480000</td>
+      <td>117.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1983.000000</td>
+      <td>177.800000</td>
+      <td>159.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1987.000000</td>
+      <td>182.880000</td>
+      <td>168.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1991.000000</td>
+      <td>185.420000</td>
+      <td>179.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1999.000000</td>
+      <td>208.280000</td>
+      <td>243.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualize the distribution of each variables</span>
+<span class="n">player</span><span class="p">[[</span><span class="s1">&#39;birthyear&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">layout</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001E053D15E10&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001E04C4BAFD0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x000001E053D2E048&gt;]],
+      dtype=object)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Birthyear shows a bit left-skewed distribution which indicates that the young players who were born after 1986 accounts for more percentage than the one of who were born before 1986. Height and weight distributions show normal distributed forms. The average height is 181.9cm and the average weight is 168.4lb.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Q1.-Which-player-showed-the-most-improved-performance-throughout-his-career?">Q1. Which player showed the most improved performance throughout his career?<a class="anchor-link" href="#Q1.-Which-player-showed-the-most-improved-performance-throughout-his-career?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A1-1. Define a function to measure the difference of max overall average rating and min overall average rating of each player&#39;s career</span>
@@ -12564,7 +12744,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -12581,7 +12761,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A1-2. Get improved performance of all players and append it in player table</span>
@@ -12600,7 +12780,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
 
@@ -12630,6 +12810,7 @@ Length: 115, dtype: int64</pre>
       <th>birthday</th>
       <th>height</th>
       <th>weight</th>
+      <th>birthyear</th>
       <th>improve</th>
     </tr>
   </thead>
@@ -12640,9 +12821,10 @@ Length: 115, dtype: int64</pre>
       <td>505942</td>
       <td>Aaron Appindangoye</td>
       <td>218353</td>
-      <td>1992-02-29 00:00:00</td>
+      <td>1992-02-29</td>
       <td>182.88</td>
       <td>187</td>
+      <td>1992</td>
       <td>4.333333</td>
     </tr>
     <tr>
@@ -12651,9 +12833,10 @@ Length: 115, dtype: int64</pre>
       <td>155782</td>
       <td>Aaron Cresswell</td>
       <td>189615</td>
-      <td>1989-12-15 00:00:00</td>
+      <td>1989-12-15</td>
       <td>170.18</td>
       <td>146</td>
+      <td>1989</td>
       <td>23.375000</td>
     </tr>
     <tr>
@@ -12662,9 +12845,10 @@ Length: 115, dtype: int64</pre>
       <td>162549</td>
       <td>Aaron Doran</td>
       <td>186170</td>
-      <td>1991-05-13 00:00:00</td>
+      <td>1991-05-13</td>
       <td>170.18</td>
       <td>163</td>
+      <td>1991</td>
       <td>10.200000</td>
     </tr>
     <tr>
@@ -12673,9 +12857,10 @@ Length: 115, dtype: int64</pre>
       <td>30572</td>
       <td>Aaron Galindo</td>
       <td>140161</td>
-      <td>1982-05-08 00:00:00</td>
+      <td>1982-05-08</td>
       <td>182.88</td>
       <td>198</td>
+      <td>1982</td>
       <td>7.000000</td>
     </tr>
     <tr>
@@ -12684,9 +12869,10 @@ Length: 115, dtype: int64</pre>
       <td>23780</td>
       <td>Aaron Hughes</td>
       <td>17725</td>
-      <td>1979-11-08 00:00:00</td>
+      <td>1979-11-08</td>
       <td>182.88</td>
       <td>154</td>
+      <td>1979</td>
       <td>8.000000</td>
     </tr>
   </tbody>
@@ -12702,7 +12888,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A1-3. Sort by improve in descending order</span>
@@ -12721,7 +12907,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[46]:</div>
 
 
 
@@ -12751,6 +12937,7 @@ Length: 115, dtype: int64</pre>
       <th>birthday</th>
       <th>height</th>
       <th>weight</th>
+      <th>birthyear</th>
       <th>improve</th>
     </tr>
   </thead>
@@ -12761,9 +12948,10 @@ Length: 115, dtype: int64</pre>
       <td>129944</td>
       <td>Marco Reus</td>
       <td>188350</td>
-      <td>1989-05-31 00:00:00</td>
+      <td>1989-05-31</td>
       <td>180.34</td>
       <td>165</td>
+      <td>1989</td>
       <td>42.000000</td>
     </tr>
     <tr>
@@ -12772,9 +12960,10 @@ Length: 115, dtype: int64</pre>
       <td>41841</td>
       <td>Francesco Della Rocca</td>
       <td>178043</td>
-      <td>1987-09-14 00:00:00</td>
+      <td>1987-09-14</td>
       <td>182.88</td>
       <td>161</td>
+      <td>1987</td>
       <td>39.000000</td>
     </tr>
     <tr>
@@ -12783,9 +12972,10 @@ Length: 115, dtype: int64</pre>
       <td>107417</td>
       <td>Eden Hazard</td>
       <td>183277</td>
-      <td>1991-01-07 00:00:00</td>
+      <td>1991-01-07</td>
       <td>172.72</td>
       <td>163</td>
+      <td>1991</td>
       <td>37.666667</td>
     </tr>
     <tr>
@@ -12794,9 +12984,10 @@ Length: 115, dtype: int64</pre>
       <td>115591</td>
       <td>Ricardo Rodriguez</td>
       <td>193352</td>
-      <td>1992-08-25 00:00:00</td>
+      <td>1992-08-25</td>
       <td>180.34</td>
       <td>170</td>
+      <td>1992</td>
       <td>37.666667</td>
     </tr>
     <tr>
@@ -12805,9 +12996,10 @@ Length: 115, dtype: int64</pre>
       <td>41433</td>
       <td>Radja Nainggolan</td>
       <td>178518</td>
-      <td>1988-05-04 00:00:00</td>
+      <td>1988-05-04</td>
       <td>175.26</td>
       <td>143</td>
+      <td>1988</td>
       <td>37.000000</td>
     </tr>
   </tbody>
@@ -12823,7 +13015,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A1-4. Average improve of all European league players</span>
@@ -12840,7 +13032,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -12865,7 +13057,7 @@ Length: 115, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A2-1. Get the season ratings of Marco Reus</span>
@@ -12882,7 +13074,7 @@ Length: 115, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[48]:</div>
 
 
 
@@ -12919,7 +13111,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A2-2. Fill the 2007/2008 season with the mean rating of 2006/2007 season and 2008/2009 season</span>
@@ -12940,7 +13132,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[49]:</div>
 
 
 
@@ -13005,7 +13197,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-1. What is the ID of Bundesliga?</span>
@@ -13022,7 +13214,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[50]:</div>
 
 
 
@@ -13130,7 +13322,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-2. Check the teams in Bundesliga</span>
@@ -13153,7 +13345,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -13170,7 +13362,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-3. Check the seasons in Bundesliga</span>
@@ -13189,7 +13381,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
@@ -13207,7 +13399,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">home_teams</span>
@@ -13223,7 +13415,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[53]:</div>
 
 
 
@@ -13243,7 +13435,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-4. Make a Bundesliga standings table</span>
@@ -13268,7 +13460,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[54]:</div>
 
 
 
@@ -13364,7 +13556,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-5. Fill the points in the standings table according to Bundesliga match records</span>
@@ -13402,7 +13594,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[55]:</div>
 
 
 
@@ -14069,7 +14261,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-6. Rank each season by point</span>
@@ -14088,7 +14280,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -14190,7 +14382,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A3-7. How has the standings of the team where Marco Reus played in changed?</span>
@@ -14207,7 +14399,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[57]:</div>
 
 
 
@@ -14342,7 +14534,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bu_standings</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;name == &quot;Borussia Dortmund&quot;&#39;</span><span class="p">)</span>
@@ -14358,7 +14550,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt output_prompt">Out[58]:</div>
 
 
 
@@ -14554,7 +14746,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">team_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
@@ -14579,7 +14771,7 @@ Name: overall_rating, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[54]:</div>
+<div class="prompt output_prompt">Out[59]:</div>
 
 
 
@@ -14639,7 +14831,7 @@ Name: overall_rating, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add title and labels</span>
@@ -14707,6 +14899,18 @@ Name: overall_rating, dtype: float64</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p>While <code>Marco Reus</code> played in <em>Borussia Mönchengladbach</em> (2009-2012), the standings of the team changed 12th -&gt; 16th -&gt; 4th. On the other hand, while he played in <em>Borussia Dortmund</em> (2012-), the standings of the team changed 2th -&gt; 2th -&gt; 7th -&gt; 2th. The graph indicates that the single player's rating does not really affect the standings of a team. A soccer team consists of 11 members!</p>
 </blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Limitation">Limitation<a class="anchor-link" href="#Limitation">&#182;</a></h3><ul>
+<li>The rating of <code>Marco Reus</code> in season 2007/2008 does not exist. This missing value is filled with the mean value of the rating of the former season and the next season. So, it is not his original rating in this season!</li>
+<li>Each tuple in <code>player_attributes</code> is recorded normally from once to third time each season for a player. It means <code>overall_rating</code> is not the value measured after each regular game in season. For a better analysis, how often and how the rating is measured should be clarified.</li>
+</ul>
 
 </div>
 </div>
